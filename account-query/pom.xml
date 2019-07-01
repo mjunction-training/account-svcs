@@ -31,7 +31,7 @@
 			<dependency>
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin-bom</artifactId>
-				<version>8.2.0</version>
+				<version>8.4.4</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -95,15 +95,20 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-amqp</artifactId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 
 		<dependency>
@@ -119,11 +124,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.axonframework</groupId>
 			<artifactId>axon-mongo</artifactId>
 			<version>${axon.version}</version>
@@ -131,15 +131,40 @@
 
 		<dependency>
 			<groupId>org.axonframework</groupId>
-			<artifactId>axon-amqp</artifactId>
+			<artifactId>axon-kafka</artifactId>
 			<version>${axon.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.axonframework</groupId>
+			<artifactId>axon-server-connector</artifactId>
+			<version>${axon.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.axonframework</groupId>
+			<artifactId>axon-configuration</artifactId>
+			<version>4.1.1</version>
+		</dependency>
+
+		<!-- <dependency>
+			<groupId>org.axonframework.extensions.springcloud</groupId>
+			<artifactId>axon-springcloud-spring-boot-starter</artifactId>
+			<version>4.1</version>
 		</dependency>
 
 		<dependency>
+			<groupId>org.axonframework.extensions.springcloud</groupId>
+			<artifactId>axon-springcloud</artifactId>
+			<version>4.1</version>
+		</dependency> -->
+
+		<!-- <dependency>
 			<groupId>org.axonframework</groupId>
 			<artifactId>axon-distributed-commandbus-springcloud</artifactId>
 			<version>${axon.version}</version>
-		</dependency>
+		</dependency> -->
+		
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -166,38 +191,13 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.amqp</groupId>
-			<artifactId>spring-rabbit</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.amqp</groupId>
-			<artifactId>spring-amqp</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.rabbitmq</groupId>
-			<artifactId>amqp-client</artifactId>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-spring-boot-starter</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-push</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-server</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-themes</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-spring</artifactId>
 		</dependency>
 
 		<dependency>

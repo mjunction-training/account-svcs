@@ -10,6 +10,9 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.util.Assert;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.training.mjunction.account.commands.AccountCreateCommand;
 import com.training.mjunction.account.commands.DepositMoneyCommand;
 import com.training.mjunction.account.commands.WithdrawMoneyCommand;
@@ -26,13 +29,18 @@ import lombok.extern.log4j.Log4j2;
 @Getter
 @Aggregate
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({ "id", "balance", "accountHolder", "accHolderName" })
 public class AccountAggregate {
 
+	@JsonProperty("id")
 	@AggregateIdentifier
 	private String id;
-
+	@JsonProperty("balance")
 	private BigDecimal balance;
+	@JsonProperty("accountHolder")
 	private String accountHolder;
+	@JsonProperty("accHolderName")
 	private String accHolderName;
 
 	@CommandHandler

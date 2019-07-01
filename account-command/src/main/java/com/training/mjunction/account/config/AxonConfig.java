@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import com.mongodb.MongoClient;
 import com.training.mjunction.account.aggregates.AccountAggregate;
@@ -29,7 +30,8 @@ public class AxonConfig {
 	private EventStore accountsEventStore;
 
 	@Bean
-	public EventStorageEngine eventStore(final MongoClient client) {
+	@Primary
+	public EventStorageEngine eventStoreEngine(final MongoClient client) {
 		return new MongoEventStorageEngine(new DefaultMongoTemplate(client));
 	}
 

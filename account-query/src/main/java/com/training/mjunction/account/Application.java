@@ -1,13 +1,12 @@
 package com.training.mjunction.account;
 
-import org.axonframework.boot.autoconfig.AxonServerAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
+import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -19,12 +18,12 @@ import brave.sampler.Sampler;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-@EnableDiscoveryClient
+@EnableEurekaClient
 @EnableHystrix
 @EnableCircuitBreaker
 @EnableOAuth2Client
 @EnableMongoRepositories(basePackages = { "com.training.mjunction.account.repo" })
-@SpringBootApplication(exclude = { AxonServerAutoConfiguration.class, RabbitAutoConfiguration.class })
+@SpringBootApplication(exclude = KafkaAutoConfiguration.class)
 public class Application extends SpringBootServletInitializer {
 
 	@Override

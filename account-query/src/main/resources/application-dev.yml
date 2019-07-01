@@ -4,11 +4,6 @@ spring:
       host: localhost
       port: 27017
       database: accounts
-  rabbitmq:
-    host: localhost
-    virtual-host: micro-vh
-    username: admin
-    password: admin
   profiles: dev
   cloud:
     config:
@@ -29,20 +24,33 @@ spring:
         - ${ADMIN_SERVER_URL:http://localhost:9090/}
       
 eureka:
+  instance:
+    instance-id: account-query
   client:
+    register-with-eureka: true
+    fetch-registry: true
     serviceUrl:
       defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
 
 axon:
-  distributed:
-    enabled: true
+  eventhandling:
+    processors:
+      Accounts:
+        source: kafkaMessageSource
+        mode: TRACKING
   serializer:
     general: jackson
-  eventhandling:
-    processors: 
-      Accounts:
-        source: accountsQueueMessageSource    
-        mode: TRACKING
+  distributed:
+    enabled: true
+    spring-cloud.fallback-to-http-get: true
+    spring-cloud.fallback-url: /message-routing-information
+  kafka:
+    client-id: accountconsumer
+    default-topic: account_topic
+    consumer:
+      group-id: account_group
+      auto-offset-reset: earliest
+      bootstrap-servers: 127.0.0.1:9092
     
 security:
   oauth2:
@@ -58,7 +66,7 @@ logging:
   pattern:
     console: "[%-5level] %date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{15}#%line %msg\n"
   level:
-    root: INFO
+    root: TRACE
     com.training.mjunction.usersvcs: ERROR
     org.springframework: ERROR
     org.hibernate: ERROR

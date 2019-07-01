@@ -3,7 +3,6 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: accounts
   profiles: dev
   cloud:
     config:
@@ -24,7 +23,11 @@ spring:
         - ${ADMIN_SERVER_URL:http://localhost:9090/}
       
 eureka:
+  instance:
+    instance-id: account-command
   client:
+    register-with-eureka: true
+    fetch-registry: true
     serviceUrl:
       defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
 
@@ -38,6 +41,8 @@ axon:
     bootstrap-servers: 127.0.0.1:9092
   distributed:
     enabled: true
+    spring-cloud.fallback-to-http-get: true
+    spring-cloud.fallback-url: /message-routing-information
   serializer:
     general: jackson
  
@@ -56,7 +61,7 @@ logging:
   pattern:
     console: "[%-5level] %date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{15}#%line %msg\n"
   level:
-    root: INFO
+    root: TRACE
     com.training.mjunction.usersvcs: ERROR
     org.springframework: ERROR
     org.hibernate: ERROR

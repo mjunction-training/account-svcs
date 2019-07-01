@@ -25,6 +25,9 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @SpringUI(path = "/ui")
 @Theme("valo")
 @Title("AccountsPortal")
@@ -62,6 +65,9 @@ public class AccountUI extends UI {
 				while (cause.getCause() != null) {
 					cause = cause.getCause();
 				}
+
+				log.error("Error ", cause);
+
 				Notification.show("Error", cause.getMessage(), Notification.Type.ERROR_MESSAGE);
 			}
 		});
