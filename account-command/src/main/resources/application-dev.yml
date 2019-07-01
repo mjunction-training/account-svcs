@@ -4,11 +4,6 @@ spring:
       host: localhost
       port: 27017
       database: accounts
-  rabbitmq:
-    host: localhost
-    virtual-host: micro-vh
-    username: admin
-    password: admin
   profiles: dev
   cloud:
     config:
@@ -34,11 +29,13 @@ eureka:
       defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
 
 axon:
-  eventhandling:
-    processors:
-      Accounts:
-          source: amqpMessageSource
-          mode: TRACKING
+  kafka:
+    client-id: accountproducer
+    default-topic: account_topic
+    producer:
+      retries: 5
+      transaction-id-prefix: clxtrx
+    bootstrap-servers: 127.0.0.1:9092
   distributed:
     enabled: true
   serializer:

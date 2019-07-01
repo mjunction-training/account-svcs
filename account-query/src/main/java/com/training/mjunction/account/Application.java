@@ -10,6 +10,7 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -22,6 +23,7 @@ import lombok.extern.log4j.Log4j2;
 @EnableHystrix
 @EnableCircuitBreaker
 @EnableOAuth2Client
+@EnableMongoRepositories(basePackages = { "com.training.mjunction.account.repo" })
 @SpringBootApplication(exclude = { AxonServerAutoConfiguration.class, RabbitAutoConfiguration.class })
 public class Application extends SpringBootServletInitializer {
 

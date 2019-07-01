@@ -54,9 +54,6 @@ public class AccountUI extends UI {
 		setContent(layout);
 
 		UI.getCurrent().setErrorHandler(new DefaultErrorHandler() {
-			/**
-			 *
-			 */
 			private static final long serialVersionUID = -7866251300351152162L;
 
 			@Override
