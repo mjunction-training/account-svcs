@@ -1,2 +1,17 @@
 server:
-  port: ${appPort:5152}
+  servlet:
+    context-path: /ui
+    session:
+      persistent: false
+  port: ${appPort:5153}
+  use-forward-headers: true
+  ssl:
+    trust-store-type: PKCS12
+    trust-store: 'classpath:certs/client-keystore.p12'
+    trust-store-password: password
+    key-store-type: PKCS12
+    key-store: 'classpath:certs/client-keystore.p12'
+    key-password: password
+    key-store-password: password
+    key-alias: client
+    client-auth: want

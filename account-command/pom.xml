@@ -152,13 +152,22 @@
 			<version>${axon.version}</version>
 		</dependency>
 
-		<!-- <dependency> <groupId>org.axonframework.extensions.springcloud</groupId> 
-			<artifactId>axon-springcloud-spring-boot-starter</artifactId> <version>4.1</version> 
-			</dependency> <dependency> <groupId>org.axonframework.extensions.springcloud</groupId> 
-			<artifactId>axon-springcloud</artifactId> <version>4.1</version> </dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 
-		<!-- <dependency> <groupId>org.axonframework</groupId> <artifactId>axon-distributed-commandbus-springcloud</artifactId> 
-			<version>${axon.version}</version> </dependency> -->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session</artifactId>
+			<version>1.3.5.RELEASE</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

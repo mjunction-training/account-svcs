@@ -14,10 +14,13 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.vaadin.spring.annotation.EnableVaadin;
+
 import brave.sampler.Sampler;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
+@EnableVaadin
 @EnableEurekaClient
 @EnableHystrix
 @EnableCircuitBreaker
